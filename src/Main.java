@@ -13,20 +13,20 @@ public class Main {
 		Date start = new Date();
 		Date end = new Date();
 		
-		// Récupère les fichiers en paramètres
+		// Recupere les fichiers en parametres
 		if (args.length > 0){
 			dictionary = readFile(args[0]);
 			sanitizedWords = words = readFile(args[1]);
 		}
 		
-		// Enlève les accents et les espaces
+		// Enleve les accents et les espaces
 		if(dictionary != null){
 			for (String string : dictionary) {
 				string = sanitize(string);
 			}
 		}
 
-		// Enlève les accents et les espaces		
+		// Enleve les accents et les espaces		
 		if(sanitizedWords != null){
 			for (String string : dictionary){
 				string = sanitize(string);
@@ -34,12 +34,12 @@ public class Main {
 		}
 		
 		start.getTime();
-		// Pour chaque mot à trouver
+		// Pour chaque mot a trouver
 		for (int i = 0; i < sanitizedWords.length; i++){
 			int numberOfMatches = 0;
 			// Pour chaque mot du dictionnaire
 			for(String dictionnaryWord : dictionary){
-				// Si les deux mots sont de même longueur
+				// Si les deux mots sont de meme longueur
 				if(sanitizedWords[i].length() == dictionnaryWord.length()){
 					if(AlgoBase(sanitizedWords[i], dictionnaryWord)){
 						numberOfMatches++;
@@ -52,7 +52,7 @@ public class Main {
 		end.getTime();
 		
 		System.out.println("Il y a un total de " + totalAnagrams + " anagrammes");
-		System.out.println("Temps d'exécution : " + (end.getTime() - start.getTime()) + " secondes");
+		System.out.println("Temps d'execution : " + (end.getTime() - start.getTime()) + " secondes");
 	}
 	
 	private static String[] readFile(String filePath){
@@ -74,13 +74,13 @@ public class Main {
 		// Enlever les espaces
 		s = s.replaceAll("\\s", "");
 		/*
-			Code emprunté :
+			Code emprunte :
 			Permet d'enlever les accents d'une string
 			Source : http://stackoverflow.com/questions/15190656/easy-way-to-remove-utf-8-accents-from-a-string/15190787#15190787
 		*/
 		s = Normalizer.normalize(s, Normalizer.Form.NFD);
 		s = s.replaceAll("[\\p{InCombiningDiacriticalMarks}]", "");
-		/* Fin du code emprunté */
+		/* Fin du code emprunte */
 		
 		return s;
 	}
