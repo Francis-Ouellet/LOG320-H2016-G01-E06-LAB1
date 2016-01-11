@@ -46,6 +46,9 @@ public class Main {
                 }
             }
 
+            if(string2.length() > 0)
+                return false;
+            
             return true;
 	}
 	
