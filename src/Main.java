@@ -21,15 +21,15 @@ public class Main {
 		
 		// Enleve les accents et les espaces
 		if(dictionary != null){
-			for (String string : dictionary) {
-				string = sanitize(string);
+			for (int i = 0; i < dictionary.length; i++) {
+				dictionary[i] = sanitize(dictionary[i]);
 			}
 		}
 
 		// Enleve les accents et les espaces		
 		if(sanitizedWords != null){
-			for (String string : dictionary){
-				string = sanitize(string);
+			for (int i = 0; i < sanitizedWords.length; i++) {
+				sanitizedWords[i] = sanitize(sanitizedWords[i]);
 			}
 		}
 		
@@ -38,10 +38,10 @@ public class Main {
 		for (int i = 0; i < sanitizedWords.length; i++){
 			int numberOfMatches = 0;
 			// Pour chaque mot du dictionnaire
-			for(String dictionnaryWord : dictionary){
+			for(int j = 0; j < dictionary.length; j++){
 				// Si les deux mots sont de meme longueur
-				if(sanitizedWords[i].length() == dictionnaryWord.length()){
-					if(AlgoBase(sanitizedWords[i], dictionnaryWord)){
+				if(sanitizedWords[i].length() == dictionary[j].length()){
+					if(AlgoBase(sanitizedWords[i], dictionary[j])){
 						numberOfMatches++;
 					}
 				}
@@ -52,7 +52,7 @@ public class Main {
 		end.getTime();
 		
 		System.out.println("Il y a un total de " + totalAnagrams + " anagrammes");
-		System.out.println("Temps d'execution : " + (end.getTime() - start.getTime()) + " secondes");
+		System.out.println("Temps d'execution : " + (end.getTime() - start.getTime()) + " millisecondes");
 	}
 	
 	private static String[] readFile(String filePath){
@@ -107,6 +107,7 @@ public class Main {
                         string2Length --;
                         
                         foundChar = true;
+                        break;
                     }   
                 }
                 if(!foundChar){
