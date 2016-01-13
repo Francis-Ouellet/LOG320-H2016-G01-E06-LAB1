@@ -5,13 +5,16 @@ import java.io.InputStreamReader;
 import java.text.Normalizer;
 
 public class Main {
+	
+	private static int[] PRIMES = new int[]{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
+	
 	public static void main(String[] args) {
         String[] dictionary = null;
 		String[] words = null;
 		String[] sanitizedWords = null;
 		int totalAnagrams = 0;
-		Date start = new Date();
-		Date end = new Date();
+		long start;
+		long end;
 		
 		// Recupere les fichiers en parametres
 		if (args.length > 0){
@@ -33,26 +36,24 @@ public class Main {
 			}
 		}
 		
-		start.getTime();
+		start = System.currentTimeMillis();
 		// Pour chaque mot a trouver
 		for (int i = 0; i < sanitizedWords.length; i++){
 			int numberOfMatches = 0;
 			// Pour chaque mot du dictionnaire
 			for(int j = 0; j < dictionary.length; j++){
-				// Si les deux mots sont de meme longueur
-				if(sanitizedWords[i].length() == dictionary[j].length()){
-					if(AlgoBase(sanitizedWords[i], dictionary[j])){
-						numberOfMatches++;
-					}
+				if(AlgoBase(sanitizedWords[i], dictionary[j])){
+					numberOfMatches++;
+					//System.out.println(dictionary[j]);
 				}
 			}
 			System.out.println("Il y a " + numberOfMatches + " anagramme(s) du mot " + words[i]);
 			totalAnagrams += numberOfMatches;
 		}
-		end.getTime();
+		end = System.currentTimeMillis();
 		
 		System.out.println("Il y a un total de " + totalAnagrams + " anagrammes");
-		System.out.println("Temps d'execution : " + (end.getTime() - start.getTime()) + " millisecondes");
+		System.out.println("Temps d'execution : " + (end - start) + " millisecondes");
 	}
 	
 	private static String[] readFile(String filePath){
@@ -121,9 +122,35 @@ public class Main {
             return true;
 	}
 	
-	private static Boolean AlgoFrancis(){
+	//  Chaque nombre plus grand que 1 est soit un nombre premier, soit un multiple de nombres premiers
+	//	J'assigne les 26 nombres premiers aux 26 lettres de l'alphabet
+	//  Chaque mot possède donc une valeur numérique unique, peu importe l'ordre de ses lettres (abb (2*3*3 = 18) = bab (3*2*2 = 18))
+	private static Boolean AlgoFrancis(String word1, String word2){
+		if(word1.length() == word2.length()){
+			// on s'assure que toutes les lettres sont majuscules, sinon le hash ne fonctionnerait pas
+			// aussi, les majuscules arrivent en premier dans la table ASCII, on utilise donc des plus petits chiffres
+			long hash1 = ToNumericHash(word1.toUpperCase().toCharArray());
+			long hash2 = ToNumericHash(word2.toUpperCase().toCharArray());
+			if(hash1 == -1 || hash2 == -1)
+				return false;
+			return hash1 == hash2;
+		}
+		else
+			return false;
+	}
+	
+	private static long ToNumericHash(char[] word){
+		long value = 1L;
+		for(int i = 0; i < word.length; i++ ){
+			// Si le caractère est dans la portée des lettres majuscules en ASCII 
+			if (word[i] >= 65 && word[i] <= 90){
+				value = value * PRIMES[word[i] - 65];
+			}
+			else
+				return -1;
+		}
+		return value;
 		
-		return false;
 	}
 	
 	private static Boolean AlgoMarco(){
