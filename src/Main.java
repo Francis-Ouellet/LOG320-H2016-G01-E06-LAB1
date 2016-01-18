@@ -42,7 +42,7 @@ public class Main {
 			int numberOfMatches = 0;
 			// Pour chaque mot du dictionnaire
 			for(int j = 0; j < dictionary.length; j++){
-				if(AlgoBase(sanitizedWords[i], dictionary[j])){
+				if(AlgoMarco(sanitizedWords[i], dictionary[j])){
 					numberOfMatches++;
 					//System.out.println(dictionary[j]);
 				}
@@ -124,7 +124,7 @@ public class Main {
 	
 	//  Chaque nombre plus grand que 1 est soit un nombre premier, soit un multiple de nombres premiers
 	//	J'assigne les 26 nombres premiers aux 26 lettres de l'alphabet
-	//  Chaque mot possède donc une valeur numérique unique, peu importe l'ordre de ses lettres (abb (2*3*3 = 18) = bab (3*2*2 = 18))
+	//  Chaque mot possï¿½de donc une valeur numï¿½rique unique, peu importe l'ordre de ses lettres (abb (2*3*3 = 18) = bab (3*2*2 = 18))
 	private static Boolean AlgoFrancis(String word1, String word2){
 		if(word1.length() == word2.length()){
 			// on s'assure que toutes les lettres sont majuscules, sinon le hash ne fonctionnerait pas
@@ -142,7 +142,7 @@ public class Main {
 	private static long ToNumericHash(char[] word){
 		long value = 1L;
 		for(int i = 0; i < word.length; i++ ){
-			// Si le caractère est dans la portée des lettres majuscules en ASCII 
+			// Si le caractï¿½re est dans la portï¿½e des lettres majuscules en ASCII 
 			if (word[i] >= 65 && word[i] <= 90){
 				value = value * PRIMES[word[i] - 65];
 			}
@@ -153,9 +153,53 @@ public class Main {
 		
 	}
 	
-	private static Boolean AlgoMarco(){
-		
-		return false;
+        private static int getArraySum(char[] array){
+            int sum = 0;
+            for(int i = 0; i < array.length; i++){
+                    sum += array[i];
+            }
+            return sum;
+        }
+        
+	private static Boolean AlgoMarco(String word1, String word2){
+                int word1Length = word1.length();
+                int word2Length = word2.length();
+                
+		if(word1Length != word2Length){
+                    return false;
+                }
+                
+                char[] chars1 = word1.toCharArray();
+                char[] chars2 = word2.toCharArray();
+                int sumWord1 = 0;
+                int sumWord2 = 0;
+                
+                sumWord1 = getArraySum(chars1);
+                sumWord2 = getArraySum(chars2);
+                
+                if(sumWord1 != sumWord2){
+                    return false;
+                }
+
+                for(int i = 0; i < word1Length; i++){
+                boolean foundChar = false;
+                for(int j = 0; j < word2Length; j++){
+                    if(chars1[i] == chars2[j]){
+                        
+                        //Dans la table ascii, aucune lettre n'est representee par 0. Alors c'est comme
+                        //si on retirait le caractere de la chaine.
+                        chars2[j] = 0;
+                        
+                        foundChar = true;
+                        break;
+                    }   
+                }
+                if(!foundChar){
+                    return false;
+                }
+            }
+
+            return true;
 	}
 	
 	private static Boolean AlgoGuy(){
