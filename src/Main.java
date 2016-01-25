@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.text.Normalizer;
-import java.util.Arrays;
 
 public class Main {
 	
