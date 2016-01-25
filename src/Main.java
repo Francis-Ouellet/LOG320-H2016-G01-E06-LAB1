@@ -205,11 +205,12 @@ public class Main {
 			if (word[i] >= 97 && word[i] <= 122){
 				value = value * PRIMES[word[i] - 97];
 			}
-                        else if(word[i] >= '0' && word[i] <= '9'){
-                            value = value * PRIMES[word[i] - '0' + 26];
-                        }
-                        else
-                            return -1;
+            else if(word[i] >= 48 && word[i] <= 57){
+            	// Le caractere 0 est 48e dans la table ascii, et on utilise les nombres premiers apres les lettres de l'alphabet
+                value = value * PRIMES[word[i] - 48 + 26];
+            }
+            else
+                return -1;
 		}
 		return value;
 		
