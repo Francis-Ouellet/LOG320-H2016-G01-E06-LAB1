@@ -17,13 +17,16 @@ public class Main {
 		
 		// Recupere les fichiers en parametres
 		if (args.length > 0){
+			System.out.println("Reading first file ...");
 			dictionary = readFile(args[0]);
+			System.out.println("Reading second file ...");
 			sanitizedWords = readFile(args[1]);
 			words = readFile(args[1]);
 		}
 		
 		// Enleve les accents et les espaces
 		if(dictionary != null){
+			System.out.println("Sanitizing first file ...");
 			for (int i = 0; i < dictionary.length; i++) {
 				dictionary[i] = sanitize(dictionary[i]);
 			}
@@ -31,6 +34,7 @@ public class Main {
 
 		// Enleve les accents et les espaces		
 		if(sanitizedWords != null){
+			System.out.println("Sanitizing second file ...");
 			for (int i = 0; i < sanitizedWords.length; i++) {
 				sanitizedWords[i] = sanitize(sanitizedWords[i]);
 			}
