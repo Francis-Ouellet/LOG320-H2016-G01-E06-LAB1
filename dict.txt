@@ -1,11 +1,11 @@
-manoir0
+manoir
 minora
 normai
 romain
 gerant
-gre8nat
+grenat
 garent
-ragent8
+ragent
 Tanger
 greant
 regnat
@@ -25,8 +25,9 @@ marie
 ramie
 guerison
 oridnateru
-dur notaire
-dorerait nu
-on durerait
-ration dure
+durnotaire
+doreraitnu
+ondurerait
+rationdure
 ruderation
+ordinateru

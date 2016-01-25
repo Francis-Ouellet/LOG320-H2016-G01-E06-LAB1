@@ -48,16 +48,39 @@ public class Main {
 			int numberOfMatches = 0;
 			// Pour chaque mot du dictionnaire
 			for(int j = 0; j < dictionary.length; j++){
-				if(AlgoBase(sanitizedWords[i], dictionary[j])){
+				if(AlgoGuy(sanitizedWords[i], dictionary[j])){
 					numberOfMatches++;
 					//System.out.println(dictionary[j]);
 				}
 			}
 			System.out.println("Il y a " + numberOfMatches + " anagramme(s) du mot " + words[i]);
 			totalAnagrams += numberOfMatches;
-		}
-		*/
+		}*/
 		
+		
+		// Calcul unique du hash
+		long[] hashWords = new long[sanitizedWords.length];
+		long[] hashDict = new long[dictionary.length];
+		
+		for (int i = 0; i < sanitizedWords.length; i ++){
+			hashWords[i] = ToNumericHash(sanitizedWords[i].toCharArray());
+		}
+		
+		for (int i = 0; i < dictionary.length; i ++){
+			hashDict[i] = ToNumericHash(dictionary[i].toCharArray());
+		}
+		
+		for(int i = 0; i < hashWords.length; i++){
+			int numberOfMatches = 0;
+			for(int j = 0; j < hashDict.length; j++){
+				if(hashWords[i] == hashDict[j])
+					numberOfMatches++;
+			}
+			System.out.println("Il y a " + numberOfMatches + " anagramme(s) du mot " + words[i]);
+			totalAnagrams += numberOfMatches;
+		}
+		
+		/*
 		// Traitement i pour chaque i, puis j pour chaque j
 		// Parcours des mots pour lesquels on cherche un anagramme
 		for(int i = 0; i < sanitizedWords.length; i++){
@@ -90,8 +113,9 @@ public class Main {
 				System.out.println("Il y a " + numberOfMatches + " anagramme(s) du mot " + words[i]);
 				totalAnagrams += numberOfMatches;
 			}
+			
 		}
-		
+		*/
 		end = System.currentTimeMillis();
 		
 		System.out.println("Il y a un total de " + totalAnagrams + " anagrammes");
@@ -268,8 +292,15 @@ public class Main {
             return true;
 	}
 	
-	private static Boolean AlgoGuy(){
-		
-		return false;
+	private static Boolean AlgoGuy(String word1, String word2){
+		DAnagrammeClasse demo= new DAnagrammeClasse();
+
+		return demo.Anagramme(word1,word2,0,recuperTa(word2));
 	}
+	
+	static	char[] recuperTa(String mot){
+		char[] tabChar= mot.toCharArray();
+		return tabChar;
+	}
+
 }
