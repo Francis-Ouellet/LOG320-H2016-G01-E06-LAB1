@@ -2,6 +2,9 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.text.Normalizer;
+import java.util.ArrayList;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 public class Main {
 	
@@ -123,7 +126,7 @@ public class Main {
 	}
 	
 	private static String[] readFile(String filePath){
-		String file = "";
+		ArrayList<String> file = new ArrayList<String>();
 		FileInputStream stream = null;
 		BufferedReader reader = null;
 		try{
@@ -131,7 +134,7 @@ public class Main {
 			 reader = new BufferedReader(new InputStreamReader(stream));
 			 String line = ""; 
 			 while ((line = reader.readLine()) != null){
-				 file = file + line + ";";
+				 file.add(line);
 			 }
 			
 		}catch(Exception e){
@@ -143,7 +146,7 @@ public class Main {
 			stream.close();
 			}catch(Exception e){}
 		}
-		return file.split(";");
+		return file.toArray(new String[file.size()]);
 	}
 	
 	private static String sanitize(String s){
