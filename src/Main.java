@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Main {
 	
-	private static int[] PRIMES = new int[]{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101};
+	private static int[] PRIMES = new int[]{2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151};
 	
 	public static void main(String[] args) {
         String[] dictionary = null;
@@ -67,12 +67,12 @@ public class Main {
 				int checkSum1 = getArraySum(array1);
 				// Parcours des mots du dictionnaire
 				for(int j = 0; j < dictionary.length; j++){
-					// Si les deux mots ont la même longueur
+					// Si les deux mots ont la mï¿½me longueur
 					if(sanitizedWords[i].length() == dictionary[j].length()){
 						char[] array2 = dictionary[j].toCharArray();
 						// Calcul de la somme des lettres pour le mot du dictionnaire
 						int checkSum2 = getArraySum(array2);
-						// Si les deux mots ont la même somme, ils ont le potentiel de contenir les mêmes lettres
+						// Si les deux mots ont la mï¿½me somme, ils ont le potentiel de contenir les mï¿½mes lettres
 						if(checkSum1 == checkSum2){
 							// Calcul du hash pour le mot du dictionnaire 
 							long hash2 = ToNumericHash(dictionary[j].toCharArray());
@@ -205,8 +205,11 @@ public class Main {
 			if (word[i] >= 97 && word[i] <= 122){
 				value = value * PRIMES[word[i] - 97];
 			}
-			else
-				return -1;
+                        else if(word[i] >= '0' && word[i] <= '9'){
+                            value = value * PRIMES[word[i] - '0' + 26];
+                        }
+                        else
+                            return -1;
 		}
 		return value;
 		
