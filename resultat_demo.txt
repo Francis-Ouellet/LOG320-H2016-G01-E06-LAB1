@@ -1,0 +1,50 @@
+Reading first file ...
+Reading second file ...
+Sanitizing first file ...
+Sanitizing second file ...
+Il y a 12 anagramme(s) du mot cree
+Il y a 17 anagramme(s) du mot aussi
+Il y a 47 anagramme(s) du mot sorte
+Il y a 56 anagramme(s) du mot libre
+Il y a 19 anagramme(s) du mot saussure
+Il y a 8 anagramme(s) du mot texte
+Il y a 7 anagramme(s) du mot matrice
+Il y a 21 anagramme(s) du mot significations
+Il y a 9 anagramme(s) du mot france
+Il y a 17 anagramme(s) du mot premieres
+Il y a 248 anagramme(s) du mot tables
+Il y a 18 anagramme(s) du mot billard
+Il y a 31 anagramme(s) du mot seraient
+Il y a 58 anagramme(s) du mot cause
+Il y a 11 anagramme(s) du mot climat
+Il y a 31 anagramme(s) du mot nobles
+Il y a 3 anagramme(s) du mot croquet
+Il y a 25 anagramme(s) du mot voulant
+Il y a 14 anagramme(s) du mot jouer
+Il y a 74 anagramme(s) du mot temps
+Il y a 74 anagramme(s) du mot version
+Il y a 8 anagramme(s) du mot interieur
+Il y a 21 anagramme(s) du mot suite
+Il y a 74 anagramme(s) du mot version
+Il y a 145 anagramme(s) du mot table
+Il y a 20 anagramme(s) du mot poussant
+Il y a 37 anagramme(s) du mot billes
+Il y a 15 anagramme(s) du mot cannes
+Il y a 3 anagramme(s) du mot croquet
+Il y a 18 anagramme(s) du mot manche
+Il y a 12 anagramme(s) du mot arrigo boito
+Il y a 22 anagramme(s) du mot edward gorey
+Il y a 17 anagramme(s) du mot vladimir nabokov
+Il y a 3 anagramme(s) du mot ted morgan
+Il y a 17 anagramme(s) du mot dave barry
+Il y a 15 anagramme(s) du mot glen duncan
+Il y a 11 anagramme(s) du mot damon duncan
+Il y a 13 anagramme(s) du mot damon albarn
+Il y a 14 anagramme(s) du mot anna madrigal
+Il y a 20 anagramme(s) du mot tom marvolo riddle
+Il y a 11 anagramme(s) du mot buckethead
+Il y a 22 anagramme(s) du mot daniel clowes
+Il y a 15 anagramme(s) du mot siobhan donaghy
+Il y a 12 anagramme(s) du mot i have constructed a string that needs to be shuffled
+Il y a un total de 1345 anagrammes
+Temps d'execution : 865 millisecondes
